@@ -74,6 +74,7 @@ class OrdersController < ApplicationController
     # Transfer money to receipient
     transfer = Stripe::Transfer.create(
       :amount => (@listing.price * 95).floor,
+      # 95 percent to seller. 5 for me. price converted to cents
       :currency => "usd",
       :recipient => @seller.recipient
     )
